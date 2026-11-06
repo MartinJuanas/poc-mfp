@@ -1,0 +1,201 @@
+.receipt-form-container {
+    background: rgba(30, 30, 30, 0.95);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ink);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.receipt-form-container h2 {
+    margin-bottom: 1.5rem;
+    color: #bfaec2;
+    /* Soft pastel accent */
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #a0a0a0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-row label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.form-row input,
+.form-row select {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--ink);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    outline: none;
+    border-color: #bb86fc;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(152, 94, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(152, 94, 255, 0.4);
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Concepts / Items Lists */
+.concepts-group {
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.group-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+.concept-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.concept-row input {
+    margin: 0;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.input-desc {
+    flex: 2;
+    min-width: 120px;
+}
+
+.input-sm {
+    width: 60px;
+    text-align: center;
+}
+
+.input-amount {
+    width: 100px;
+    text-align: right;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.btn-icon.add {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.btn-icon.add:hover {
+    background: rgba(34, 197, 94, 0.3);
+}
+
+.btn-icon.delete {
+    background: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+    font-size: 1.1rem;
+}
+
+.btn-icon.delete:hover {
+    background: rgba(248, 113, 113, 0.2);
+}
+
+@media (max-width: 600px) {
+    .concept-row {
+        flex-wrap: wrap;
+    }
+
+    .input-desc {
+        width: 100%;
+        flex: none;
+    }
+}

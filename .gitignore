@@ -1,0 +1,119 @@
+# Dependencies
+**/node_modules/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+**/lerna-debug.log*
+
+# Environment variables
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.*.local
+
+# Logs
+logs/
+*.log
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*.swn
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+*.local
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Uploads (backend)
+uploads/
+temp/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.bak
+*.tmp
+*.temp
+.cache/
+
+# Private settings: only blank credential templates may be versioned
+.env*
+!.env.example
+*.env
+.local-backups/
+.codex/
+.agents/
+.aws/
+.ssh/
+.venv/
+venv/
+__pycache__/
+
+# Runtime data, database volumes and exports
+data/
+mongodb_data/
+mongo_data/
+redis_data/
+bulk_data/
+docker-data/
+volumes/
+dump/
+dumps/
+backup/
+backups/
+exports/
+*.bson
+*.wt
+WiredTiger*
+*.rdb
+*.aof*
+*.dump
+*.archive
+*.zip
+*.7z
+*.tar
+*.gz
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Personal attachments and local screenshots are not repository source
+*.pdf
+!backend/src/tests/fixtures/*.pdf
+/img/
+/docs/screenshots/
+/docs/README_ORIGINAL.md
+/contexto_proyecto.md

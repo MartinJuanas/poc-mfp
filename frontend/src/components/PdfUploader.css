@@ -1,0 +1,124 @@
+.pdf-uploader {
+    margin-bottom: 1.5rem;
+}
+
+.drop-zone {
+    background: var(--surface);
+    border: 2px dashed rgba(99, 102, 241, 0.4);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+    border-color: rgba(99, 102, 241, 0.8);
+    background: var(--surface);
+}
+
+.drop-zone.dragging {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+    transform: scale(1.02);
+}
+
+.drop-zone.uploading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.drop-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.drop-text {
+    font-size: 1rem;
+    color: var(--ink);
+    margin: 0;
+}
+
+.drop-hint {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+}
+
+.uploading-state {
+    padding: 1rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(99, 102, 241, 0.2);
+    border-top-color: #6366f1;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.upload-error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #f87171;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.upload-result {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.upload-result h4 {
+    color: #22c55e;
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+}
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.result-row span:first-child {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.result-row span:last-child {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.result-row.highlight span:last-child {
+    color: #22c55e;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.result-row.usd span:last-child {
+    color: #3b82f6;
+    font-weight: 600;
+}

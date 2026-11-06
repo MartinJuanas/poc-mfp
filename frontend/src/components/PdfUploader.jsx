@@ -1,0 +1,15 @@
+import { useState, useRef, useEffect } from 'react';
+import api from '../services/api';
+import useResource from '../hooks/useResource';
+import ReceiptForm from './ReceiptForm';
+import { Icon, Modal, Notice } from './UI';
+import './PdfUploader.css';
+export default function PdfUploader({ onUploadSuccess }) {
+  const [file,setFile]=useState(null);const [preview,setPreview]=useState('');const [dragging,setDragging]=useState(false);const [busy,setBusy]=useState(false);const [draft,setDraft]=useState(null);const [error,setError]=useState('');const [success,setSuccess]=useState('');const input=useRef(null);
+  const {data:limits}=useResource('/receipts/bulk/config');
+  useEffect(()=>{if(!file){setPreview('');return;}const url=URL.createObjectURL(file);setPreview(url);return()=>URL.revokeObjectURL(url);},[file]);
+  function choose(next){setError('');setSuccess('');if(!next)return;if(!next.name.toLowerCase().endsWith('.pdf')){setError('Seleccioná un documento PDF.');return;}if(limits && next.size>limits.maxFileSizeMB*1024*1024){setError(`El archivo supera el máximo de ${limits.maxFileSizeMB} MB.`);return;}setFile(next);}
+  async function analyze(){if(!file||busy)return;setBusy(true);setError('');try{const result=await api.analyzeReceipt(file);setDraft(result.data);}catch(err){setError(err.message);}finally{setBusy(false);}}
+  async function confirm(data){const result=await api.createReceipt(data);setDraft(null);setFile(null);setSuccess('Documento guardado. Tus finanzas se actualizaron.');onUploadSuccess?.(result.data);}
+  return <div className="pdf-uploader"><div className={`drop-zone ${dragging?'dragging':''}`} role="button" tabIndex={busy?-1:0} aria-label="Seleccionar recibo o factura en PDF" onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();if(!busy)input.current.click();}}} onClick={()=>!busy&&input.current.click()} onDragOver={e=>{e.preventDefault();setDragging(true);}} onDragLeave={()=>setDragging(false)} onDrop={e=>{e.preventDefault();setDragging(false);if(!busy)choose(e.dataTransfer.files[0]);}}><Icon name="document" size={30}/><p className="drop-text">{file?file.name:'Elegí o arrastrá un PDF'}</p><p className="drop-hint">{busy?'Extrayendo datos del documento…':file?`${(file.size/1024).toFixed(0)} KB · Listo para analizar`:`Recibos de sueldo y facturas${limits?` · Hasta ${limits.maxFileSizeMB} MB`:''}`}</p><input hidden type="file" accept=".pdf,application/pdf" ref={input} onChange={e=>{choose(e.target.files[0]);e.target.value='';}}/></div>{file && <div className="upload-file-actions"><a href={preview} target="_blank" rel="noreferrer">Ver PDF seleccionado</a><button className="primary" onClick={analyze} disabled={busy}>{busy?'Analizando…':'Analizar documento'}<Icon name="arrow" size={16}/></button></div>}{error && <Notice error>{error}</Notice>}{success && <Notice>{success}</Notice>}{draft && <Modal title="Revisar documento" wide onClose={()=>setDraft(null)}><ReceiptForm initialData={draft} isDraft onSubmit={confirm} onCancel={()=>setDraft(null)}/></Modal>}</div>;
+}

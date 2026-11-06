@@ -1,0 +1,6 @@
+#!/bin/sh
+# Scan exactly what Git will commit, without printing credentials.
+if python --version >/dev/null 2>&1; then
+  exec python scripts/check_secrets.py
+fi
+exec python3 scripts/check_secrets.py
